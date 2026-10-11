@@ -2,92 +2,129 @@
 
 ## Objetivo
 
-Usar un LLM generalista como apoyo para analizar correos sospechosos, extraer evidencias y redactar una conclusión que pueda ser revisada por un analista.
+Analizar un correo electrónico **sintético** potencialmente fraudulento utilizando un LLM como apoyo, sin delegar en el modelo la decisión final.
 
-La práctica no consiste en preguntar simplemente «¿es phishing?». El objetivo es aprender a construir una investigación trazable y a detectar cuándo el modelo afirma más de lo que permiten las evidencias.
+La práctica está diseñada para trabajar:
 
-## Duración orientativa
+- extracción de evidencias observables;
+- separación entre hechos e inferencias;
+- identificación de señales de riesgo;
+- formulación de hipótesis;
+- estimación razonada del nivel de confianza;
+- propuesta de acciones de validación;
+- revisión humana antes de cualquier decisión operativa.
 
-20–25 minutos.
+> Todo el material de esta práctica es ficticio y ha sido creado exclusivamente con fines formativos.
 
-## Requisitos
+---
 
-- navegador web;
-- acceso a un LLM generalista;
-- este repositorio.
+## Duración estimada
 
-No se necesita instalar software ni utilizar una plataforma SIEM.
+**25–35 minutos**
+
+---
 
 ## Escenario
 
-Formas parte de un pequeño equipo de seguridad. El servicio de soporte ha escalado varios mensajes recibidos por usuarios porque podrían ser intentos de phishing.
+Trabajas en un equipo de seguridad que recibe una alerta sobre un correo sospechoso remitido a una persona del área financiera.
 
-Tu tarea es realizar un primer triage asistido por IA. Para cada correo debes determinar qué evidencias son relevantes, qué hipótesis son razonables y qué información adicional necesitarías antes de tomar una decisión definitiva.
+Tu tarea consiste en revisar el mensaje, identificar señales relevantes y preparar una conclusión que pueda ser revisada por otro analista.
 
-## Material
+No debes asumir que el mensaje es malicioso solo porque parezca sospechoso. La conclusión debe estar vinculada a evidencias concretas.
 
-Utiliza el fichero [`datos/correos.json`](datos/correos.json).
+---
 
-Contiene varios correos sintéticos. Los dominios y URLs han sido preparados para formación y no deben interpretarse como indicadores reales.
+## Material proporcionado
 
-## Tarea 1 — Análisis humano inicial
+- `datos/correo-sintetico.txt` — correo ficticio a analizar.
+- `datos/contexto-organizacion.md` — contexto mínimo del entorno.
+- `datos/indicadores-sinteticos.json` — datos complementarios preparados para la práctica.
+- `prompt-analisis.md` — prompt estructurado recomendado.
+- `plantilla-entrega.md` — plantilla para documentar el análisis.
+- `solucion/solucion-orientativa.md` — propuesta de resolución para el instructor.
 
-Antes de utilizar IA, revisa cada correo y anota rápidamente:
+---
 
-- remitente visible;
-- dominio del remitente;
-- asunto;
-- URLs o dominios incluidos;
-- señales de urgencia o presión;
-- solicitudes de credenciales, pagos o acciones inusuales;
-- incoherencias entre el texto y los metadatos disponibles.
+## Parte 1 — Revisión humana inicial
 
-No intentes todavía emitir una conclusión definitiva.
+Antes de utilizar IA:
 
-## Tarea 2 — Análisis con IA
+1. Lee el correo completo.
+2. Identifica al menos **5 elementos observables** que puedan ser relevantes.
+3. Clasifica cada uno como:
+   - normal;
+   - sospechoso;
+   - desconocido / requiere validación.
+4. Anota qué información adicional necesitarías para decidir con mayor seguridad.
 
-Copia un correo completo en el LLM y utiliza la plantilla de [`prompt-analisis.md`](prompt-analisis.md).
+No busques todavía una conclusión definitiva.
 
-Repite el proceso con los demás mensajes.
+---
 
-## Tarea 3 — Verificación
+## Parte 2 — Análisis con un LLM
 
-Para cada respuesta del modelo identifica al menos:
+Utiliza el contenido de `prompt-analisis.md`.
 
-1. una afirmación respaldada directamente por el correo;
-2. una inferencia razonable pero no demostrada;
-3. cualquier dato inventado o supuesto por el modelo;
-4. una evidencia adicional que pedirías para aumentar la confianza.
+Copia en el modelo:
 
-Ejemplos de evidencias adicionales podrían ser cabeceras completas, reputación histórica del dominio, registros del proxy, telemetría del endpoint o información sobre el usuario afectado.
+1. el prompt;
+2. el correo sintético;
+3. el contexto de la organización;
+4. los indicadores sintéticos.
 
-## Tarea 4 — Clasificación
+No introduzcas datos reales de tu empresa, credenciales ni información personal.
 
-Asigna a cada correo una de estas categorías:
+---
 
-- **Probablemente legítimo**
-- **Sospechoso — requiere verificación**
-- **Probable phishing**
+## Parte 3 — Verificación crítica
 
-Añade un nivel de confianza: bajo, medio o alto.
+Compara tu análisis inicial con la respuesta del modelo.
 
-La clasificación debe estar acompañada por evidencias observables.
+Para cada afirmación importante del LLM, responde:
 
-## Tarea 5 — Entrega
+- ¿Está respaldada por una evidencia concreta?
+- ¿Es una inferencia razonable?
+- ¿Es una afirmación no demostrada?
+- ¿Qué dato adicional permitiría confirmarla o descartarla?
 
-Completa [`plantilla-entrega.md`](plantilla-entrega.md).
+Presta especial atención a cualquier afirmación excesivamente categórica.
 
-La entrega final debe ser breve. Un analista debería poder leerla y entender:
+---
 
-- qué has observado;
-- qué conclusión propones;
-- qué no puedes confirmar todavía;
-- qué harías a continuación.
+## Parte 4 — Decisión
 
-## Pregunta de cierre
+Completa `plantilla-entrega.md`.
 
-Compara tu análisis inicial con el del LLM:
+La decisión final debe incluir:
 
-> ¿En qué parte de la investigación te ha ahorrado más tiempo la IA y en qué parte ha necesitado más supervisión humana?
+- nivel de riesgo estimado;
+- confianza de la conclusión;
+- evidencias principales;
+- aspectos no verificados;
+- siguiente acción recomendada;
+- justificación de por qué esa acción es proporcional.
 
-Ese equilibrio entre velocidad y verificación será un tema recurrente durante todo el curso.
+---
+
+## Criterios de evaluación
+
+Se valorará especialmente que el alumno:
+
+- no confunda indicadores con pruebas definitivas;
+- cite evidencias específicas del artefacto;
+- separe observación e inferencia;
+- mantenga la incertidumbre cuando falten datos;
+- no copie ciegamente la respuesta del modelo;
+- proponga acciones de validación realistas.
+
+---
+
+## Mensaje didáctico
+
+La IA puede acelerar el análisis, resumir señales y ayudar a estructurar una hipótesis.
+
+Pero la calidad del resultado depende de tres factores:
+
+**evidencia + contexto + validación humana**
+
+Una respuesta convincente del modelo no equivale a una conclusión verificada.

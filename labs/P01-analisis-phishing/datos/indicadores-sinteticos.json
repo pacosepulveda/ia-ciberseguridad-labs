@@ -1,0 +1,30 @@
+{
+  "artefacto": "correo-sintetico",
+  "datos": [
+    {
+      "tipo": "dominio_remitente",
+      "valor": "proveedores-ejemplo.net",
+      "estado": "no_reconocido_en_contexto"
+    },
+    {
+      "tipo": "url_visible",
+      "valor": "https://proveedores-ejemplo.net.validacion-segura.example/login",
+      "estado": "dominio_efectivo_validacion-segura.example"
+    },
+    {
+      "tipo": "urgencia",
+      "valor": "antes de las 12:00 de hoy",
+      "estado": "presente"
+    },
+    {
+      "tipo": "solicitud_credenciales",
+      "valor": "inicie sesión con su cuenta corporativa",
+      "estado": "presente"
+    },
+    {
+      "tipo": "contexto_portal_habitual",
+      "valor": "https://proveedores.contoso-lab.example",
+      "estado": "no_coincide"
+    }
+  ]
+}

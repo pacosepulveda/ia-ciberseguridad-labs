@@ -2,107 +2,124 @@
 
 ## Objetivo
 
-Utilizar un LLM como apoyo para investigar una secuencia breve de eventos de seguridad, formular una hipótesis, relacionarla con MITRE ATT&CK y proponer una regla Sigma que después debe revisarse manualmente.
+Investigar una secuencia de eventos **sintéticos** de endpoint, reconstruir qué ocurrió,
+formular hipótesis, relacionar la actividad con MITRE ATT&CK y proponer una regla Sigma
+de detección.
 
-La práctica está diseñada para trabajar con telemetría sintética y no requiere SIEM ni instalaciones locales.
+La práctica está orientada a análisis defensivo. No se ejecuta código ni se interactúa
+con sistemas reales.
 
-## Duración orientativa
+---
 
-25–30 minutos.
+## Duración estimada
 
-## Requisitos
+**35–45 minutos**
 
-- navegador web;
-- acceso a un LLM generalista;
-- acceso a la web pública de MITRE ATT&CK para comprobar las técnicas;
-- este repositorio.
+---
 
 ## Escenario
 
-El equipo SOC recibe una alerta asociada a una estación Windows. No se dispone de una investigación previa: solo de una pequeña secuencia de eventos exportados desde distintas fuentes.
+El equipo SOC recibe una alerta por actividad inusual en un equipo de usuario.
 
-Tu tarea es reconstruir qué pudo ocurrir, distinguir hechos de hipótesis y diseñar una detección sencilla que pueda ser revisada por otro analista.
+Dispones de un conjunto reducido de eventos de procesos y autenticación. Tu objetivo es
+determinar qué hechos pueden afirmarse, qué hipótesis son razonables y qué información
+adicional necesitarías antes de cerrar la investigación.
 
-## Material
+El flujo recomendado es:
 
-Utiliza:
+`telemetría → línea temporal → hipótesis → ATT&CK → detección → validación`
 
-- [`datos/eventos.jsonl`](datos/eventos.jsonl)
-- [`prompt-investigacion.md`](prompt-investigacion.md)
-- [`plantilla-entrega.md`](plantilla-entrega.md)
+---
 
-Los nombres de host, usuarios, hashes, dominios y direcciones son sintéticos y están preparados para formación.
+## Material proporcionado
 
-## Tarea 1 — Reconstruye la línea temporal
+- `datos/eventos.jsonl` — telemetría sintética.
+- `datos/contexto-entorno.md` — contexto mínimo.
+- `prompt-investigacion.md` — prompt estructurado para el LLM.
+- `plantilla-entrega.md` — plantilla del alumno.
+- `solucion/solucion-orientativa.md` — referencia para el instructor.
+- `solucion/regla-sigma-orientativa.yml` — ejemplo de detección defensiva.
 
-Sin utilizar todavía el LLM:
+---
 
-1. Ordena los eventos por hora.
-2. Identifica usuario, host y procesos implicados.
-3. Señala relaciones padre-hijo entre procesos cuando estén disponibles.
-4. Marca los eventos que te parezcan más relevantes.
-5. Escribe una primera hipótesis en una sola frase.
+## Parte 1 — Reconstrucción temporal
 
-## Tarea 2 — Pide una segunda lectura a la IA
+1. Ordena los eventos por fecha y hora.
+2. Identifica relaciones padre-hijo entre procesos.
+3. Señala qué eventos son claramente normales, cuáles son inusuales y cuáles requieren contexto.
+4. Resume la secuencia en no más de 8 pasos.
 
-Utiliza [`prompt-investigacion.md`](prompt-investigacion.md) junto con el contenido de `eventos.jsonl`.
+---
 
-Compara la respuesta del modelo con tu análisis inicial.
+## Parte 2 — Hipótesis
 
-Comprueba especialmente si el modelo:
+Formula al menos dos hipótesis:
 
-- inventa eventos que no existen;
-- da por demostrado un compromiso cuando solo existe actividad sospechosa;
-- atribuye intención al usuario o al proceso sin evidencia suficiente;
-- propone técnicas ATT&CK sin justificar qué evento las respalda.
+- una que explique la actividad como potencialmente maliciosa;
+- otra que contemple una explicación legítima o administrativa.
 
-## Tarea 3 — Valida MITRE ATT&CK
+Para cada hipótesis indica qué evidencia la respalda y qué evidencia la debilitaría.
 
-Para cada técnica propuesta por el LLM:
+---
 
-1. busca la técnica en MITRE ATT&CK;
-2. comprueba que el comportamiento observado encaja realmente;
-3. anota el evento que sustenta el mapeo;
-4. descarta cualquier técnica que dependa de hechos no presentes en los datos.
+## Parte 3 — MITRE ATT&CK
 
-No se evalúa cuántas técnicas consigues asociar, sino la calidad de la justificación.
+Relaciona la actividad con técnicas ATT&CK solo cuando exista evidencia suficiente.
 
-## Tarea 4 — Diseña una regla Sigma
+No conviertas una coincidencia superficial en una atribución definitiva.
 
-Pide al LLM que proponga una regla Sigma para detectar el comportamiento más claro de la secuencia.
+Incluye:
 
-Después revísala manualmente:
+- técnica o subtécnica;
+- evidencia concreta;
+- confianza;
+- observaciones.
 
-- ¿el `logsource` corresponde con los datos disponibles?
-- ¿los campos utilizados existen en los eventos?
-- ¿la condición es demasiado amplia?
-- ¿podría generar falsos positivos razonables?
-- ¿el título y la descripción explican qué detecta realmente?
+---
 
-No aceptes la regla solo porque el YAML sea válido visualmente.
+## Parte 4 — Sigma
 
-## Tarea 5 — Mejora la detección
+Propón una regla Sigma que detecte el patrón más relevante de forma generalizable.
 
-Propón al menos una mejora, por ejemplo:
+La regla debe:
 
-- añadir contexto del proceso padre;
-- exigir una combinación de argumentos;
-- limitar la detección a un tipo concreto de telemetría;
-- documentar una exclusión legítima conocida;
-- separar una detección de alta cobertura de otra de mayor precisión.
+- centrarse en comportamiento observable;
+- evitar nombres de usuario o host excesivamente específicos;
+- documentar falsos positivos esperables;
+- ser revisable por otro analista antes de desplegarla.
 
-## Entrega
+---
 
-Completa [`plantilla-entrega.md`](plantilla-entrega.md).
+## Parte 5 — Validación crítica
 
-El resultado debe permitir que otro analista entienda:
+Compara la propuesta del LLM con los datos originales.
 
-- qué ocurrió según las evidencias;
-- qué parte sigue siendo una hipótesis;
-- qué técnicas ATT&CK se han validado;
-- qué detecta exactamente la regla Sigma;
-- qué falsos positivos podrían aparecer.
+Marca cualquier:
 
-## Pregunta de cierre
+- evento inventado;
+- técnica ATT&CK no sustentada;
+- causalidad asumida sin evidencia;
+- condición Sigma demasiado amplia o demasiado específica.
 
-> ¿Qué parte te resultó más fiable en el LLM: ordenar y resumir los eventos, mapear ATT&CK o escribir la regla Sigma? ¿Cuál necesitó más verificación manual?
+---
+
+## Criterios de evaluación
+
+Se valorará:
+
+- fidelidad a la telemetría;
+- separación hecho/inferencia;
+- calidad de la línea temporal;
+- prudencia en el mapeo ATT&CK;
+- utilidad defensiva de la regla Sigma;
+- consideración de falsos positivos;
+- capacidad para identificar información faltante.
+
+---
+
+## Mensaje didáctico
+
+La IA puede acelerar la lectura y organización de telemetría, pero no sustituye
+la validación del analista.
+
+Una buena investigación conserva siempre la trazabilidad entre conclusión y evidencia.

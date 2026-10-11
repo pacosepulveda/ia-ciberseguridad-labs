@@ -1,55 +1,46 @@
-# Prompt de investigación — P02
+# Prompt estructurado de investigación
 
-Copia el siguiente prompt y añade debajo el contenido de `datos/eventos.jsonl`.
+Actúa como analista SOC en un ejercicio defensivo con telemetría sintética.
 
-```text
-Actúa como analista SOC revisando una secuencia breve de eventos de seguridad sintéticos.
+Recibirás:
 
-Trabaja únicamente con la evidencia proporcionada. No inventes eventos, malware, hashes, conexiones, procesos, usuarios, técnicas ATT&CK ni resultados de herramientas que no aparezcan en los datos.
+1. eventos de endpoint;
+2. contexto del entorno.
 
-Devuelve la respuesta con esta estructura:
+Tu tarea es ayudar a reconstruir la secuencia sin inventar datos.
 
-1. Línea temporal
-   - Resume los eventos en orden cronológico.
+## Reglas
 
-2. Hechos observables
-   - Enumera solo hechos presentes en los registros.
+- Separa hechos observados de inferencias.
+- No atribuyas actor, malware o campaña.
+- No inventes reputación IP, hashes, DNS, sandbox ni eventos ausentes.
+- Para ATT&CK, indica técnica solo si la evidencia observada la sustenta razonablemente.
+- Señala explícitamente incertidumbre y falsos positivos posibles.
+- Si propones Sigma, usa comportamiento observable y evita indicadores demasiado específicos.
 
-3. Eventos más relevantes
-   - Indica cuáles merecen investigación y por qué.
+## Formato
 
-4. Hipótesis principal
-   - Formula una hipótesis prudente sobre lo que pudo ocurrir.
-   - Explica qué evidencia la apoya.
+### 1. Línea temporal
+Tabla: hora | proceso/evento | padre/origen | observación.
 
-5. Explicaciones alternativas
-   - Indica al menos una explicación legítima o menos grave que también sea compatible con los datos.
+### 2. Hechos confirmados
+Lista breve.
 
-6. MITRE ATT&CK
-   - Propón únicamente técnicas que puedas relacionar con un evento concreto.
-   - Para cada técnica, indica el ID, nombre y evento que justificaría el mapeo.
-   - Marca el mapeo como "pendiente de validación manual".
+### 3. Hipótesis
+Tabla: hipótesis | evidencia a favor | evidencia pendiente | confianza.
 
-7. Detección Sigma
-   - Propón una regla Sigma sencilla para el comportamiento más claro.
-   - Usa solo campos que aparezcan en los eventos proporcionados.
-   - Añade una sección de falsos positivos posibles.
+### 4. MITRE ATT&CK
+Tabla: técnica | evidencia | confianza | comentario.
 
-8. Información adicional necesaria
-   - Indica qué telemetría pedirías para confirmar o descartar la hipótesis.
+### 5. Detección Sigma propuesta
+Incluye una regla Sigma defensiva y explica qué detecta.
 
-9. Nivel de confianza
-   - Bajo / medio / alto, con una explicación breve.
+### 6. Falsos positivos
+Lista razonada.
 
-Distingue claramente entre HECHOS, INFERENCIAS y DATOS NO DISPONIBLES.
-```
+### 7. Datos adicionales necesarios
+Qué consultarías a continuación.
 
-## Segunda pasada
-
-Después de recibir la primera respuesta del modelo, utiliza:
-
-```text
-Audita tu respuesta anterior. Señala cualquier técnica ATT&CK, afirmación o campo Sigma que no esté respaldado por los eventos proporcionados. Corrige la respuesta y explica cada cambio.
-```
-
-El objetivo es comprobar si el modelo detecta sus propias sobreinferencias antes de que un analista las acepte.
+### 8. Control de calidad
+Incluye:
+`Afirmaciones que no pueden demostrarse con la telemetría proporcionada`.

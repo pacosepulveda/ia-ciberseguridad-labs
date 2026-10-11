@@ -1,0 +1,25 @@
+Asunto: Acción requerida: actualización urgente de datos de proveedor
+
+De: "Portal de Proveedores" <notificaciones@proveedores-ejemplo.net>
+Para: Laura Martín <laura.martin@contoso-lab.example>
+Fecha: 8 de octubre de 2026, 09:17
+
+Buenos días Laura,
+
+Debido a una actualización del sistema de facturación, necesitamos que valide los datos bancarios asociados a su perfil antes de las 12:00 de hoy.
+
+Si no se completa la validación, algunas órdenes de pago podrían quedar retenidas hasta el siguiente ciclo de facturación.
+
+Puede revisar la información desde el siguiente enlace:
+
+https://proveedores-ejemplo.net.validacion-segura.example/login
+
+Para evitar incidencias, inicie sesión con su cuenta corporativa y confirme que los datos actuales son correctos.
+
+Gracias por su colaboración.
+
+Equipo de Gestión de Proveedores
+Departamento Administrativo
+
+---
+Aviso: mensaje generado automáticamente.

@@ -1,61 +1,42 @@
-# Plantilla de entrega — P03
+# Entrega — P03 Reporting
 
-## 1. Clasificación previa de la evidencia
+**Alumno/a:**  
+**Fecha:**  
 
-### Hechos confirmados
-
-- 
-- 
-- 
-
-### Inferencias
-
-- 
-- 
-
-### Datos no disponibles
+## 1. Hechos que deben conservarse en todas las versiones
 
 - 
 - 
 - 
 
----
+## 2. Incertidumbres que no deben desaparecer
 
-## 2. Nota de traspaso para SOC
+- 
+- 
+- 
 
-Escribe aquí la versión final revisada.
+## 3. Nota técnica SOC
 
----
+Escribe aquí.
 
-## 3. Resumen para CISO
+## 4. Resumen CISO
 
-Escribe aquí la versión final revisada.
+Escribe aquí.
 
----
+## 5. Actualización para dirección
 
-## 4. Actualización para dirección
+Escribe aquí.
 
-Máximo 120 palabras.
+## 6. Revisión crítica
 
----
+### ¿Qué simplificaste?
+- 
 
-## 5. Auditoría del LLM
+### ¿Qué decidiste no afirmar?
+- 
 
-| Revisión | Resultado |
-|---|---|
-| Dato inventado detectado | |
-| Cambio injustificado de certeza | |
-| Información crítica omitida | |
-| Tecnicismo innecesario | |
-| Recomendación desproporcionada | |
+### ¿Detectaste alguna exageración del LLM?
+- 
 
-## 6. Comparación entre audiencias
-
-- **Información que mantuviste igual en las tres versiones:**
-- **Información que simplificaste para CISO:**
-- **Información que omitiste para dirección:**
-- **Expresión de incertidumbre que conservaste deliberadamente:**
-
-## 7. Reflexión
-
-En 3–5 líneas explica por qué resumir no debe equivaler a aumentar la certeza ni a eliminar las incertidumbres relevantes.
+### ¿Qué frase modificarías para conservar mejor la incertidumbre?
+-

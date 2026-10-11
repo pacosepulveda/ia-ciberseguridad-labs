@@ -1,54 +1,50 @@
-# Plantilla de entrega — P04
+# Entrega — P04 Prompt injection y uso seguro de LLM
 
-## 1. Fronteras de confianza
+**Alumno/a:**  
+**Fecha:**  
 
-| Elemento | Confiable como instrucción | Puede contener datos útiles | Riesgo principal |
+## 1. Clasificación de fuentes
+
+| Fuente | Quién la controla | Confianza | ¿Instrucción o dato? |
 |---|---|---|---|
-| Instrucción del analista | Sí / No | Sí / No | |
-| Procedimiento interno | Sí / No | Sí / No | |
-| Ticket de usuario | Sí / No | Sí / No | |
-| Metadatos del ticket | Sí / No | Sí / No | |
-| Salida del LLM | Sí / No | Sí / No | |
+| Sistema |  |  |  |
+| Usuario |  |  |  |
+| Documento A |  |  |  |
+| Documento B |  |  |  |
+| Documento C |  |  |  |
 
-## 2. Resultado de la Prueba A
+## 2. Contenido problemático identificado
 
-- **Decisión producida por el modelo:**
-- **¿Siguió contenido incrustado como si fuera una instrucción?:**
-- **Evidencia:**
-- **Otro problema observado:**
+Copia solo el fragmento mínimo necesario y explica por qué es peligroso.
 
-## 3. Fragmento de prompt injection identificado
+## 3. Respuesta correcta al usuario
 
-- **Documento:**
-- **Fragmento relevante:**
-- **Por qué debe tratarse como dato y no como instrucción:**
-- **Qué riesgo introduce en un sistema RAG o asistente conectado a herramientas:**
+Redacta una respuesta segura y fiel a las fuentes válidas.
 
-## 4. Resultado de la Prueba B
+## 4. Controles propuestos
 
-- **Decisión producida por el modelo:**
-- **Evidencias citadas correctamente:**
-- **¿Identificó el contenido no confiable?:**
-- **Diferencias respecto a la Prueba A:**
-
-## 5. Controles fuera del prompt
-
-Propón al menos cuatro.
-
-| Control | Qué riesgo reduce | Dónde se aplicaría |
+| Capa | Control | Qué riesgo reduce |
 |---|---|---|
-| | | |
-| | | |
-| | | |
-| | | |
+| Prompting |  |  |
+| Arquitectura |  |  |
+| Permisos |  |  |
+| Validación |  |  |
+| Humano |  |  |
+| Auditoría |  |  |
 
-## 6. Decisión final sobre TCK-1042
+## 5. ¿Qué no debería poder hacer nunca el LLM por sí solo?
 
-- **Decisión:** Aprobar / No aprobar / Requiere verificación adicional
-- **Evidencia principal:**
-- **Control que falta:**
-- **Acción humana recomendada:**
+- 
+- 
+- 
 
-## 7. Reflexión
+## 6. Revisión crítica del LLM
 
-En 3–5 líneas explica por qué la salida de un LLM que procesa contenido no confiable no debería conectarse directamente a una acción sensible sin controles adicionales.
+### Correcto
+- 
+
+### Insuficiente
+- 
+
+### Riesgoso
+-

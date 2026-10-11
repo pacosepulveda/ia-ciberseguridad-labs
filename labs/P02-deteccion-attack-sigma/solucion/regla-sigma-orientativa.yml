@@ -1,0 +1,27 @@
+title: Office Spawning PowerShell
+id: 11111111-2222-3333-4444-555555555555
+status: experimental
+description: Detects Microsoft Office applications spawning PowerShell on Windows endpoints.
+author: Curso IA para Ciberseguridad
+date: 2026-10-11
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_parent:
+    ParentImage|endswith:
+      - '\WINWORD.EXE'
+      - '\EXCEL.EXE'
+      - '\POWERPNT.EXE'
+  selection_child:
+    Image|endswith:
+      - '\powershell.exe'
+      - '\pwsh.exe'
+  condition: selection_parent and selection_child
+falsepositives:
+  - Legitimate Office automation
+  - Administrative scripts launched from Office workflows
+level: medium
+tags:
+  - attack.execution
+  - attack.t1059.001

@@ -1,55 +1,56 @@
-# Plantilla de entrega — P02
+# Entrega — P02 De logs a MITRE ATT&CK y Sigma
 
-## 1. Línea temporal resumida
+**Alumno/a:**  
+**Fecha:**  
 
-| Hora | Evento | Relevancia |
-|---|---|---|
-| | | |
-| | | |
-| | | |
+## 1. Línea temporal
 
-## 2. Hipótesis
-
-- **Hipótesis principal:**
-- **Evidencias que la apoyan:**
-- **Explicación alternativa:**
-- **Nivel de confianza:** Bajo / Medio / Alto
-
-## 3. MITRE ATT&CK
-
-| Técnica | Nombre | Evento que la respalda | Validada manualmente |
+| Hora | Evento | Proceso/origen | Observación |
 |---|---|---|---|
-| | | | Sí / No |
-| | | | Sí / No |
+|  |  |  |  |
 
-## 4. Regla Sigma propuesta
+## 2. Hechos confirmados
+
+- 
+- 
+- 
+
+## 3. Hipótesis
+
+| Hipótesis | Evidencia a favor | Evidencia pendiente | Confianza |
+|---|---|---|---|
+|  |  |  |  |
+
+## 4. Mapeo ATT&CK
+
+| Técnica/subtécnica | Evidencia | Confianza | Comentario |
+|---|---|---|---|
+|  |  |  |  |
+
+## 5. Regla Sigma propuesta
 
 ```yaml
-# Pega aquí la regla revisada
+# pega aquí tu propuesta
 ```
 
-### Revisión de la regla
+## 6. Falsos positivos esperables
 
-- **Qué comportamiento detecta realmente:**
-- **Campos de los que depende:**
-- **Posibles falsos positivos:**
-- **Una mejora de precisión o contexto:**
+- 
+- 
 
-## 5. Revisión del LLM
+## 7. Qué información falta
 
-- **Una conclusión bien respaldada:**
-- **Una sobreinferencia o error detectado:**
-- **Una técnica ATT&CK que tuviste que validar o corregir:**
-- **Un cambio que hiciste a la regla Sigma:**
+- 
+- 
+- 
 
-## 6. Datos adicionales
+## 8. Revisión del LLM
 
-Indica al menos tres fuentes de información que pedirías antes de cerrar la investigación.
+### Correcto y respaldado por datos
+- 
 
-1. 
-2. 
-3. 
+### Inferencias razonables pero no demostradas
+- 
 
-## 7. Reflexión
-
-En 3–5 líneas explica qué parte del trabajo delegarías con más confianza a la IA y cuál mantendrías bajo revisión humana estricta.
+### Afirmaciones que descartarías
+-

@@ -1,45 +1,59 @@
-# Prompt de análisis
+# Prompt estructurado para el análisis
 
-Copia el siguiente prompt y, debajo, añade el contenido completo de uno de los correos del dataset.
+Actúa como analista de ciberseguridad en un ejercicio formativo.
 
-```text
-Actúa como analista de ciberseguridad realizando un triage inicial de un correo sospechoso.
+Vas a recibir:
 
-Analiza únicamente la información proporcionada. No inventes cabeceras, reputación de dominios, resultados de sandbox, información WHOIS ni telemetría que no aparezca en el artefacto.
+1. un correo electrónico sintético;
+2. contexto sintético de la organización;
+3. indicadores preparados para la práctica.
 
-Devuelve la respuesta con esta estructura:
+Tu objetivo es ayudar a analizar el correo **sin asumir de antemano que es malicioso**.
 
-1. Hechos observables
-   - Lista solo elementos presentes en el correo.
+## Instrucciones
 
-2. Señales de riesgo
-   - Explica por qué cada señal puede ser relevante.
+Separa claramente:
 
-3. Elementos que reducen el riesgo o generan duda
-   - Señala cualquier evidencia que impida afirmar con certeza que se trata de phishing.
+- **Evidencias observables**: información que aparece directamente en los artefactos.
+- **Inferencias**: interpretaciones razonables pero no demostradas.
+- **Datos faltantes**: información que sería necesaria para aumentar la confianza.
+- **Riesgos potenciales**: qué podría ocurrir si la hipótesis de fraude fuese correcta.
 
-4. Hipótesis
-   - Indica la hipótesis principal y, si procede, una alternativa.
+No inventes reputación de dominios, resultados de sandbox, inteligencia de amenazas, DNS,
+WHOIS, cabeceras completas ni telemetría no proporcionada.
 
-5. Clasificación provisional
-   - Probablemente legítimo / Sospechoso — requiere verificación / Probable phishing.
-   - Nivel de confianza: bajo / medio / alto.
+## Formato de salida
 
-6. Información adicional necesaria
-   - Indica qué datos pedirías para confirmar o descartar la hipótesis.
+### 1. Resumen
+Máximo 5 líneas.
 
-7. Resumen para un analista
-   - Máximo 5 líneas.
+### 2. Evidencias observables
+Tabla con:
+- evidencia;
+- fuente;
+- relevancia.
 
-Distingue claramente entre HECHOS, INFERENCIAS y DATOS NO DISPONIBLES.
-```
+### 3. Inferencias
+Tabla con:
+- inferencia;
+- evidencia que la sustenta;
+- grado de confianza: bajo / medio / alto.
 
-## Variante de comprobación
+### 4. Información no disponible
+Lista de datos que deberían verificarse.
 
-Después del primer análisis, puedes preguntar:
+### 5. Evaluación provisional
+Indica:
+- riesgo: bajo / medio / alto;
+- confianza: baja / media / alta;
+- justificación breve.
 
-```text
-Revisa tu respuesta anterior. Identifica cualquier afirmación que no esté respaldada directamente por el correo y corrígela o rebaja su nivel de certeza.
-```
+### 6. Siguiente acción recomendada
+Propón una acción prudente y reversible antes de tomar decisiones definitivas.
 
-El objetivo de esta segunda interacción es comprobar si el modelo es capaz de autocorregir afirmaciones demasiado seguras.
+### 7. Control de calidad
+Incluye una sección final titulada:
+
+`Afirmaciones que NO puedo demostrar con los datos proporcionados`
+
+y enumera cualquier conclusión que no pueda validarse con las evidencias disponibles.

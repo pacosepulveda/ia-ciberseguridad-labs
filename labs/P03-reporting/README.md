@@ -2,105 +2,92 @@
 
 ## Objetivo
 
-Aprender a utilizar un LLM para transformar una misma investigación de seguridad en comunicaciones adaptadas a distintos destinatarios sin perder precisión, inventar hechos ni exagerar el impacto.
+Transformar una misma investigación sintética en comunicaciones adaptadas a distintas audiencias
+sin perder precisión, incertidumbre ni trazabilidad.
 
-La práctica pone el foco en una habilidad muy habitual en operaciones de seguridad: convertir evidencias técnicas en información útil para analistas, responsables de seguridad y dirección.
+La práctica trabaja una competencia muy importante en ciberseguridad: comunicar correctamente
+lo que sabemos, lo que inferimos y lo que todavía no sabemos.
 
-## Duración orientativa
+---
 
-20–25 minutos.
+## Duración estimada
 
-## Requisitos
+**25–35 minutos**
 
-- navegador web;
-- acceso a un LLM generalista;
-- este repositorio.
+---
 
 ## Escenario
 
-El SOC ha investigado una actividad sospechosa en una estación de trabajo. La investigación todavía no está cerrada, pero hay suficientes datos para informar a varias audiencias.
+El SOC ha investigado una actividad inusual en una estación de trabajo de Finanzas.
 
-Dispones de un resumen técnico con hechos confirmados, hipótesis y datos pendientes. Debes generar tres versiones de la comunicación:
+Debes preparar tres salidas a partir del mismo conjunto de hechos:
 
-1. una nota de traspaso para otro analista SOC;
-2. un resumen para el CISO o responsable de seguridad;
-3. una actualización breve para dirección no técnica.
+1. nota técnica para otro analista;
+2. resumen para CISO;
+3. actualización breve para dirección.
 
-## Material
+La dificultad consiste en simplificar sin deformar.
 
-Utiliza:
+---
 
-- [`datos/incidente.json`](datos/incidente.json)
-- [`prompt-reporting.md`](prompt-reporting.md)
-- [`plantilla-entrega.md`](plantilla-entrega.md)
+## Material proporcionado
 
-Todos los datos son sintéticos.
+- `datos/resumen-incidente.md` — hechos e incertidumbres del caso.
+- `prompt-reporting.md` — prompt estructurado.
+- `plantilla-entrega.md` — plantilla del alumno.
+- `solucion/solucion-orientativa.md` — referencia del instructor.
 
-## Tarea 1 — Separa hechos de hipótesis
+---
 
-Antes de usar IA, clasifica cada afirmación del incidente en una de estas categorías:
+## Parte 1 — Identifica el núcleo del mensaje
 
-- **hecho confirmado**;
-- **inferencia razonable**;
-- **dato todavía desconocido**.
+Antes de utilizar IA, separa:
 
-Esta separación es importante porque el nivel de detalle puede cambiar entre audiencias, pero la certeza de los hechos no debería hacerlo.
+- hechos confirmados;
+- inferencias;
+- impacto potencial;
+- impacto confirmado;
+- acciones realizadas;
+- decisiones pendientes.
 
-## Tarea 2 — Genera una nota para SOC
+---
 
-Pide al LLM una versión destinada al siguiente analista que continuará la investigación.
+## Parte 2 — Tres audiencias
 
-Debe conservar:
+Genera:
 
-- línea temporal esencial;
-- host y usuario afectados;
-- evidencias disponibles;
-- hipótesis actuales;
-- acciones ya realizadas;
-- datos todavía pendientes;
-- próximos pasos concretos.
+### Analista SOC
+Puede incluir detalle técnico, procesos, hipótesis y datos faltantes.
 
-Evita lenguaje de marketing o explicaciones excesivamente generales.
+### CISO
+Debe centrarse en riesgo, confianza, alcance, controles y decisión pendiente.
 
-## Tarea 3 — Genera un resumen para CISO
+### Dirección
+Debe explicar impacto de negocio, estado actual y siguiente decisión sin jerga innecesaria.
 
-La versión para el responsable de seguridad debe responder rápidamente a:
+---
 
-- qué sabemos;
-- qué riesgo podría existir;
-- qué se está haciendo;
-- qué incertidumbres permanecen;
-- si se necesita alguna decisión o escalado.
+## Parte 3 — Control de exageración
 
-No debe convertir una sospecha en un incidente confirmado solo para sonar más contundente.
+Comprueba que ninguna versión:
 
-## Tarea 4 — Genera una actualización para dirección
+- convierta una hipótesis en un hecho;
+- afirme un impacto no observado;
+- invente usuarios afectados;
+- invente exfiltración;
+- atribuya actor o campaña;
+- oculte incertidumbre importante.
 
-Crea una versión de máximo 120 palabras para una audiencia no técnica.
+---
 
-Debe evitar jerga innecesaria y centrarse en:
+## Criterios de evaluación
 
-- impacto conocido;
-- exposición potencial;
-- estado actual;
-- siguiente hito de la investigación.
+Se valorará:
 
-Si el impacto no está confirmado, debe decirlo explícitamente.
-
-## Tarea 5 — Audita las tres versiones
-
-Compara los textos generados con `incidente.json` y marca:
-
-- cualquier dato inventado;
-- cualquier aumento injustificado del nivel de certeza;
-- información crítica que se haya perdido al resumir;
-- tecnicismos que no sean apropiados para la audiencia;
-- recomendaciones desproporcionadas respecto a la evidencia.
-
-## Entrega
-
-Completa [`plantilla-entrega.md`](plantilla-entrega.md) con las tres versiones finales y la auditoría del LLM.
-
-## Pregunta de cierre
-
-> ¿Qué información debe cambiar al adaptar un informe a otra audiencia y qué información no debería cambiar nunca?
+- fidelidad al caso original;
+- adecuación a la audiencia;
+- concisión;
+- claridad;
+- conservación de incertidumbre;
+- ausencia de exageración;
+- trazabilidad de conclusiones.

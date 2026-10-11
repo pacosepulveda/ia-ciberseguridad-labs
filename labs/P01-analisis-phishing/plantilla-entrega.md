@@ -1,29 +1,89 @@
-# Plantilla de entrega — P01
+# Entrega — P01 Análisis de phishing asistido por IA
 
-Completa una tabla por cada correo analizado.
+**Alumno/a:**  
+**Fecha:**  
 
-| Campo | Respuesta |
-|---|---|
-| ID del correo | |
-| Clasificación | Probablemente legítimo / Sospechoso / Probable phishing |
-| Confianza | Bajo / Medio / Alto |
-| Evidencia 1 | |
-| Evidencia 2 | |
-| Evidencia 3 | |
-| Inferencia principal | |
-| Dato que falta | |
-| Siguiente paso recomendado | |
+---
 
-## Revisión del LLM
+## 1. Conclusión provisional
 
-- **Una afirmación correcta y bien respaldada:**
+**Clasificación propuesta:**  
+- [ ] Benigno
+- [ ] Sospechoso
+- [ ] Probable phishing
+- [ ] No concluyente
 
-- **Una inferencia razonable pero no demostrada:**
+**Nivel de riesgo:**  
+- [ ] Bajo
+- [ ] Medio
+- [ ] Alto
 
-- **Una afirmación inventada o excesivamente segura, si la hubo:**
+**Nivel de confianza:**  
+- [ ] Bajo
+- [ ] Medio
+- [ ] Alto
 
-- **Corrección que hiciste al modelo:**
+### Justificación breve
 
-## Reflexión final
+Escribe entre 4 y 8 líneas.
 
-En 3–5 líneas explica en qué parte del análisis la IA te resultó más útil y en cuál necesitó más supervisión humana.
+---
+
+## 2. Evidencias principales
+
+| # | Evidencia observable | Fuente | Por qué es relevante |
+|---|---|---|---|
+| 1 |  |  |  |
+| 2 |  |  |  |
+| 3 |  |  |  |
+| 4 |  |  |  |
+| 5 |  |  |  |
+
+---
+
+## 3. Inferencias
+
+| Inferencia | Evidencia que la sustenta | Confianza |
+|---|---|---|
+|  |  |  |
+|  |  |  |
+
+---
+
+## 4. Información que falta
+
+- 
+- 
+- 
+
+---
+
+## 5. Comparación con la respuesta del LLM
+
+### Afirmaciones útiles del modelo
+
+- 
+
+### Afirmaciones que requieren verificación
+
+- 
+
+### Afirmaciones que el modelo no puede demostrar
+
+- 
+
+---
+
+## 6. Siguiente acción recomendada
+
+Describe una acción prudente, reversible y proporcional.
+
+---
+
+## 7. Reflexión final
+
+Responde brevemente:
+
+1. ¿Qué aportó la IA al análisis?
+2. ¿Qué error podría haber cometido un analista que confiara ciegamente en el modelo?
+3. ¿Qué evidencia fue más importante para tu decisión?
