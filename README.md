@@ -8,8 +8,6 @@ Los laboratorios están diseñados para poder realizarse desde el navegador, sin
 
 ### Restricciones de diseño
 
-- Duración total del curso: **5 horas**.
-- Grupo previsto: **22 alumnos**.
 - Sin instalaciones locales obligatorias.
 - Los laboratorios deben poder realizarse con un **LLM generalista accesible desde web**.
 - **Microsoft Security Copilot** y **Gemini en Google SecOps** se presentan como referencias del mercado, pero **no son necesarios para completar las prácticas**.
