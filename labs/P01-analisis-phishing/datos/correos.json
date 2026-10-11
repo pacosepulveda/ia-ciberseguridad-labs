@@ -1,0 +1,38 @@
+[
+  {
+    "id": "correo-01",
+    "from": "Microsoft 365 Support <security@microsoft-alerts.example>",
+    "reply_to": "helpdesk@account-check.example",
+    "subject": "Acción requerida: su cuenta será suspendida hoy",
+    "date": "2026-10-08T08:14:00Z",
+    "body": "Hemos detectado actividad inusual en su cuenta. Para evitar la suspensión, confirme su identidad antes de 60 minutos utilizando el siguiente enlace: https://login-security.example/verify. Si no completa la validación, el acceso será bloqueado automáticamente.",
+    "notes": "Ejemplo sintético para formación. Los dominios no representan indicadores reales."
+  },
+  {
+    "id": "correo-02",
+    "from": "Departamento de Personas <rrhh@empresa.example>",
+    "reply_to": "rrhh@empresa.example",
+    "subject": "Recordatorio: formación obligatoria de octubre",
+    "date": "2026-10-08T09:02:00Z",
+    "body": "Buenos días. Recordamos que la formación anual de seguridad debe completarse antes del 31 de octubre. Acceda desde el portal corporativo habitual. No responda a este correo con contraseñas ni datos personales. Para cualquier duda, contacte con RR. HH. por los canales internos.",
+    "notes": "Ejemplo sintético para formación. No se facilita ninguna URL externa."
+  },
+  {
+    "id": "correo-03",
+    "from": "Proveedor habitual <facturacion@proveedor.example>",
+    "reply_to": "cobros@proveedor-payments.example",
+    "subject": "Cambio urgente de cuenta bancaria para factura pendiente",
+    "date": "2026-10-08T10:37:00Z",
+    "body": "Por una incidencia administrativa necesitamos que la factura pendiente se abone en una nueva cuenta bancaria. Por favor, confirme que ha recibido este mensaje y espere los nuevos datos de pago. Necesitamos procesarlo hoy para evitar retrasos.",
+    "notes": "Ejemplo sintético. El escenario está pensado para discutir BEC, verificación fuera de banda y ausencia de evidencias suficientes."
+  },
+  {
+    "id": "correo-04",
+    "from": "Servicio de almacenamiento <notifications@files.example>",
+    "reply_to": "notifications@files.example",
+    "subject": "Un documento ha sido compartido contigo",
+    "date": "2026-10-08T11:20:00Z",
+    "body": "El usuario Marta G. ha compartido contigo el documento 'Presupuesto Q4'. Puedes revisarlo desde el portal de archivos corporativo. Si no esperabas este documento, confirma con la persona remitente antes de abrirlo.",
+    "notes": "Ejemplo deliberadamente ambiguo: faltan cabeceras completas, URL y contexto del usuario."
+  }
+]
