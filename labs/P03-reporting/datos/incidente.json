@@ -1,0 +1,41 @@
+{
+  "incident_id": "INC-2026-0142",
+  "estado": "investigacion_en_curso",
+  "prioridad": "media",
+  "host": "WS-023",
+  "usuario": "EMPRESA\\ana.garcia",
+  "hechos_confirmados": [
+    "Un documento de Office descargado fue abierto en WS-023.",
+    "WINWORD.EXE inició un proceso powershell.exe con el argumento -EncodedCommand.",
+    "El proceso PowerShell realizó una conexión HTTPS a cdn-updates.example.",
+    "El proceso PowerShell ejecutó whoami.exe /all.",
+    "El endpoint fue aislado preventivamente de la red corporativa a las 10:28Z.",
+    "No se ha observado actividad equivalente en otros endpoints durante la revisión inicial."
+  ],
+  "inferencias": [
+    "La secuencia es compatible con ejecución de código iniciada desde un documento.",
+    "Existe la posibilidad de que el equipo haya ejecutado contenido no autorizado.",
+    "La conexión de red podría estar relacionada con la actividad observada, pero su finalidad no está confirmada."
+  ],
+  "datos_no_disponibles": [
+    "No se ha determinado el contenido del argumento codificado de PowerShell.",
+    "No se ha confirmado si hubo descarga de contenido adicional.",
+    "No existe evidencia confirmada de exfiltración.",
+    "No se ha confirmado persistencia.",
+    "El impacto sobre datos o credenciales sigue sin determinarse."
+  ],
+  "acciones_realizadas": [
+    "Aislamiento preventivo del endpoint.",
+    "Preservación de la telemetría disponible.",
+    "Búsqueda inicial de actividad similar en otros equipos."
+  ],
+  "siguientes_pasos": [
+    "Revisar telemetría EDR asociada al proceso PowerShell.",
+    "Analizar el documento de origen en un entorno controlado.",
+    "Determinar el contexto y finalidad de la conexión de red.",
+    "Revisar actividad posterior del usuario y del endpoint.",
+    "Actualizar la evaluación de impacto cuando exista nueva evidencia."
+  ],
+  "impacto_confirmado": "No se ha confirmado impacto sobre datos, credenciales o servicios.",
+  "nota_formacion": "Todos los nombres, dominios e indicadores son sintéticos y se usan únicamente para formación."
+}
