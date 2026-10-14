@@ -33,12 +33,14 @@ El flujo recomendado es:
 
 ## Material proporcionado
 
-- `datos/eventos.jsonl` — telemetría sintética.
+- `datos/eventos.jsonl` — telemetría sintética de la investigación.
 - `datos/contexto-entorno.md` — contexto mínimo.
+- `datos/eventos-prueba-sigma.jsonl` — casos positivo y negativos para razonar sobre la regla Sigma.
 - `prompt-investigacion.md` — prompt estructurado para el LLM.
 - `plantilla-entrega.md` — plantilla del alumno.
 - `solucion/solucion-orientativa.md` — referencia para el instructor.
 - `solucion/regla-sigma-orientativa.yml` — ejemplo de detección defensiva.
+- `solucion/PRUEBA-SIGMA.md` — guía para validar y probar la detección.
 
 ---
 
@@ -87,6 +89,9 @@ La regla debe:
 - evitar nombres de usuario o host excesivamente específicos;
 - documentar falsos positivos esperables;
 - ser revisable por otro analista antes de desplegarla.
+
+Después revisa cómo podría validarse usando los eventos positivos y negativos de
+`datos/eventos-prueba-sigma.jsonl` y la guía `solucion/PRUEBA-SIGMA.md`.
 
 ---
 
