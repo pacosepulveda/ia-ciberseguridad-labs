@@ -1,0 +1,3 @@
+{"case":"positive_office_powershell","Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","ParentImage":"C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE","CommandLine":"powershell.exe -NoProfile -Command Get-ComputerInfo","expected_match":true}
+{"case":"negative_explorer_powershell","Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","ParentImage":"C:\\Windows\\explorer.exe","CommandLine":"powershell.exe -NoProfile","expected_match":false}
+{"case":"negative_word_cmd","Image":"C:\\Windows\\System32\\cmd.exe","ParentImage":"C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE","CommandLine":"cmd.exe /c dir","expected_match":false}
