@@ -32,6 +32,11 @@ para el modelo.
 El objetivo es identificar por qué ese contenido no debe considerarse confiable y diseñar
 controles adecuados.
 
+> **Importante:** no es necesario que el modelo obedezca la prompt injection para completar la
+> práctica. Distintos modelos pueden reaccionar de forma diferente. Si el modelo la detecta y la
+> ignora, el ejercicio sigue siendo válido: que una prueba concreta no consiga alterar el modelo
+> no demuestra que la arquitectura sea segura.
+
 ---
 
 ## Material proporcionado
@@ -93,6 +98,9 @@ Después evalúa si el propio LLM:
 - sobreestima la eficacia del prompting;
 - propone controles arquitectónicos;
 - mantiene la separación entre datos e instrucciones.
+
+Si el modelo no obedece la instrucción adversarial, documenta también **por qué ese resultado no
+es suficiente para certificar la seguridad del sistema**.
 
 ---
 
