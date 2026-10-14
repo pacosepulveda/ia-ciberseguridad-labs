@@ -28,12 +28,12 @@ legítima o una prueba interna.
 
 ## ATT&CK razonable
 
-- **T1059.001 — PowerShell**: respaldado por la ejecución observada.
-- **T1087 / Account Discovery** no sería la mejor elección para `whoami`; es preferible documentar
-  el comportamiento observado y validar el mapeo exacto antes de publicarlo.
-- **T1016 — System Network Configuration Discovery**: razonable por `ipconfig /all`.
+- **T1059.001 — PowerShell**: respaldado por la ejecución observada de `powershell.exe`.
+- **T1033 — System Owner/User Discovery**: respaldado por la ejecución de `whoami /all`.
+- **T1016 — System Network Configuration Discovery**: respaldado por `ipconfig /all`.
 
-El punto didáctico es evitar mapear técnicas solo porque “parecen encajar”.
+El mapeo ATT&CK debe apoyarse en comportamiento observable y contexto. El hecho de que un comando
+pueda asociarse a una técnica no demuestra por sí mismo intención maliciosa.
 
 ## Sigma
 
@@ -41,6 +41,9 @@ La regla orientativa incluida detecta Office generando PowerShell. Es deliberada
 generalizable y defensiva.
 
 Antes de desplegarla deberían evaluarse falsos positivos y adaptarla al esquema real del SIEM.
+
+Para una prueba rápida, consulta `PRUEBA-SIGMA.md` y los eventos de
+`../datos/eventos-prueba-sigma.jsonl`.
 
 ## Datos adicionales
 
