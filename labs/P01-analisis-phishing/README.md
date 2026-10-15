@@ -18,12 +18,6 @@ La práctica está diseñada para trabajar:
 
 ---
 
-## Duración estimada
-
-**25–35 minutos**
-
----
-
 ## Escenario
 
 Trabajas en un equipo de seguridad que recibe una alerta sobre un correo sospechoso remitido a una persona del área financiera.
