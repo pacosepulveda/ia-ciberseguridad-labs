@@ -11,12 +11,6 @@ con sistemas reales.
 
 ---
 
-## Duración estimada
-
-**35–45 minutos**
-
----
-
 ## Escenario
 
 El equipo SOC recibe una alerta por actividad inusual en un equipo de usuario.
