@@ -33,9 +33,9 @@ El objetivo es identificar por qué ese contenido no debe considerarse confiable
 controles adecuados.
 
 > **Importante:** no es necesario que el modelo obedezca la prompt injection para completar la
-> práctica. Distintos modelos pueden reaccionar de forma diferente. Si el modelo la detecta y la
-> ignora, el ejercicio sigue siendo válido: que una prueba concreta no consiga alterar el modelo
-> no demuestra que la arquitectura sea segura.
+> práctica. Algunos servicios, incluido Microsoft Copilot, pueden bloquear o rechazar directamente
+> una solicitud cuando detectan contenido que parece una prompt injection. Ese rechazo es también
+> un resultado válido del laboratorio y debe analizarse.
 
 ---
 
@@ -43,7 +43,8 @@ controles adecuados.
 
 - `datos/instruccion-sistema.md`
 - `datos/pregunta-usuario.md`
-- `datos/documentos-recuperados.md`
+- `datos/documentos-recuperados.md` — contiene el ejemplo adversarial literal.
+- `datos/documentos-recuperados-analisis.md` — versión de contingencia que describe la inyección sin incluirla como instrucción activa.
 - `prompt-prueba.md`
 - `plantilla-entrega.md`
 - `solucion/solucion-orientativa.md`
@@ -88,19 +89,62 @@ Evita confiar únicamente en “un prompt mejor”.
 
 ---
 
-## Parte 4 — Revisión con LLM
+## Parte 4 — Prueba con LLM
 
-Utiliza `prompt-prueba.md` para pedir al modelo que analice el escenario.
+### Intento A — Documento adversarial literal
 
-Después evalúa si el propio LLM:
+Utiliza `prompt-prueba.md` junto con:
 
-- identifica correctamente la inyección;
-- sobreestima la eficacia del prompting;
-- propone controles arquitectónicos;
-- mantiene la separación entre datos e instrucciones.
+- `datos/instruccion-sistema.md`;
+- `datos/pregunta-usuario.md`;
+- `datos/documentos-recuperados.md`.
 
-Si el modelo no obedece la instrucción adversarial, documenta también **por qué ese resultado no
-es suficiente para certificar la seguridad del sistema**.
+Pueden ocurrir tres resultados:
+
+1. **El modelo intenta obedecer el contenido adversarial.** Analiza qué fuente consiguió influir en la respuesta.
+2. **El modelo detecta la inyección y la ignora.** Analiza por qué ese comportamiento es correcto, pero no demuestra por sí solo que toda la arquitectura sea segura.
+3. **La plataforma rechaza procesar la solicitud.** Registra el rechazo como una mitigación observada de la plataforma. No asumas qué mecanismo interno concreto se activó si la interfaz no lo indica.
+
+### Intento B — Fallback de análisis seguro
+
+Si el servicio rechaza la solicitud o impide completar el ejercicio, sustituye únicamente
+`datos/documentos-recuperados.md` por:
+
+`datos/documentos-recuperados-analisis.md`
+
+Esta versión conserva el escenario, pero describe el intento de inyección en lugar de presentarlo
+como una instrucción literal dirigida al modelo.
+
+Vuelve a utilizar `prompt-prueba.md` y evalúa si el LLM:
+
+- clasifica correctamente la confianza de las fuentes;
+- identifica el intento de obtener autoridad;
+- propone una respuesta basada en los documentos válidos;
+- distingue controles de prompting y controles arquitectónicos;
+- aplica mínimo privilegio y Human-in-the-Loop.
+
+---
+
+## Parte 5 — Qué hemos aprendido del rechazo
+
+Si Copilot u otro servicio bloquea el primer intento, no consideres la práctica fallida.
+
+El rechazo permite discutir una capa adicional:
+
+```text
+Contenido no confiable
+        ↓
+Protecciones de la plataforma
+        ↓
+Modelo
+        ↓
+Controles de la aplicación
+        ↓
+Autorización / acción
+```
+
+Una protección del proveedor puede reducir el riesgo, pero no sustituye a los controles del
+sistema que integra el LLM.
 
 ---
 
@@ -110,6 +154,7 @@ Se valorará:
 
 - comprensión del problema de confianza;
 - capacidad de separar datos e instrucciones;
+- interpretación correcta de un rechazo o bloqueo de la plataforma;
 - diseño de controles por capas;
 - aplicación de mínimo privilegio;
 - uso de Human-in-the-Loop;
