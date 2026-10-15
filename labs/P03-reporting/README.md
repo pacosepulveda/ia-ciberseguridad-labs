@@ -10,12 +10,6 @@ lo que sabemos, lo que inferimos y lo que todavía no sabemos.
 
 ---
 
-## Duración estimada
-
-**25–35 minutos**
-
----
-
 ## Escenario
 
 El SOC ha investigado una actividad inusual en una estación de trabajo de Finanzas.
