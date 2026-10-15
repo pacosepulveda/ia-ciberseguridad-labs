@@ -10,12 +10,6 @@ No se conectan herramientas reales, no se ejecutan acciones externas y no se man
 
 ---
 
-## Duración estimada
-
-**30–40 minutos**
-
----
-
 ## Escenario
 
 Una organización utiliza un asistente interno para resumir documentos de su base de conocimiento.
